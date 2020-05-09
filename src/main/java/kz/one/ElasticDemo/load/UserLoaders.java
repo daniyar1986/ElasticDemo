@@ -31,6 +31,7 @@ public class UserLoaders {
         users.add(new User(1L,"Daniyar","One",100000L));
         users.add(new User(2L,"Maksat","One",200000L));
         users.add(new User(3L,"Moldir","Halyk",18000L));
+        users.add(new User(4L,"Moldir","Halyk",20000L));
         return users;
     }
 }
