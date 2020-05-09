@@ -3,6 +3,7 @@ package kz.one.ElasticDemo.controller;
 import kz.one.ElasticDemo.builder.SearchQueryBuilder;
 import kz.one.ElasticDemo.model.User;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,11 @@ public class ManualSearchController {
     @GetMapping(value = "/{text}")
     public List<User> getAllUsers(@PathVariable String text){
         return searchQueryBuilder.getAllUsers(text);
+    }
+
+    @GetMapping(value = "/all")
+    public List<User> getAll(){
+        return searchQueryBuilder.getAll();
     }
 
 }

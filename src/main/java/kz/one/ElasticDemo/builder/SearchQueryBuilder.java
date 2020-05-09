@@ -2,6 +2,7 @@ package kz.one.ElasticDemo.builder;
 
 import kz.one.ElasticDemo.model.User;
 import lombok.RequiredArgsConstructor;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
@@ -39,6 +40,13 @@ public class SearchQueryBuilder {
         List<User> users = template.queryForList(build, User.class);
         return users;
 
+    }
+
+    public List<User> getAll(){
+        BoolQueryBuilder should = QueryBuilders.boolQuery().should(QueryBuilders.matchAllQuery());
+        NativeSearchQuery build = new NativeSearchQueryBuilder().withQuery(should).build();
+        List<User> users = template.queryForList(build, User.class);
+        return users;
     }
 
 }
